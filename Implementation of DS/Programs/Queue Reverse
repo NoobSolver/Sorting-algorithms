@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+int siz = 10;
+int queu[10];
+int front = -1, rear = -1;
+int n=10;
+void push_back(int data){
+	if(rear == n)
+		cout << "Overflow\n";
+	else
+		queu[++rear] = data;
+}
+
+void deleteQ()
+{
+	if(front == rear)
+		cout << "Underflow\n";
+	else
+	front++;
+}
+
+void printQ()
+{
+	cout << "Elements are : \n";
+	int a = front+1, b = rear;
+	
+	while(a<=b)
+	{
+		 cout << queu[a++] << " ";
+	}
+}
+
+int stackk[10000], top = -1;
+
+void push(int data)
+{
+	stackk[++top] = data;
+}
+
+void pop()
+{
+	top--;
+}
+
+
+int main()
+{
+		cout << "Enter the insert element.\n";
+		for(int i = 1; i< n; i++)
+		{
+			int val;
+			cin >> val;
+			push_back(val);
+		}
+		
+		while(front != rear+1)
+		{
+			push(queu[front]);
+			deleteQ();
+		}
+		front = -1, rear = -1;
+		while(top != -1)
+		{
+			push_back(stackk[top]);
+			pop();
+		}
+		//while()
+		printQ();
+
+	return 0;
+}
