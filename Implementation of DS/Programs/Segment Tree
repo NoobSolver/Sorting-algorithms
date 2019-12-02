@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+const int siz = 1e5+5;
+vector< vector<ll> > G(siz);
+ll vis[siz];
+ll seg[1000000], a[siz], node = 0;
+int main(){
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+		
+		ll n, q;
+		cin >> n >> q;
+		
+		for(int &i : a)
+			cin >> i;
+			
+		build(1, 1, n-1)
+		
+		while(q--){
+			char type;
+			int l, r;
+			cin >> type >> l >> r;
+			if(char == 'q')
+				query(1, n-1, l, r)
+			else
+				update(1, n-1, l, r);
+		}
+		
+	return 0;
+}
