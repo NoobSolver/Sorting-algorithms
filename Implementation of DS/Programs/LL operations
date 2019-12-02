@@ -1,0 +1,145 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+	public:
+		int data;
+		Node * next;
+};
+
+void search(Node * head, int data)
+{
+	while(head != NULL && data != head -> data)
+		head = head->next;
+		
+	if(head != NULL)
+		cout << "Data found\n";
+	else
+		cout << "Data Not found\n";
+}
+
+void push_front(Node ** head, int data)
+{
+	Node * node = new Node();
+	node -> data = data;
+	node->next = *head;
+	*head = node;
+}
+
+void insert(Node ** head, int data, int pos){
+	Node * node = *head;
+	int counter = 0;
+	if(*head == NULL)
+	{
+		cout << "Data cannot be inserted as list is empty:\n";
+		return;
+	}
+	
+	while(counter != pos)
+	{
+		node = node-> next;
+		counter++;
+	}
+	//cout << "OKAY\n";
+	Node * temp = new Node();
+	temp -> data = data;
+	temp -> next = node->next;
+	node->next = temp;
+}
+
+void append(Node ** head, int data)
+{
+	Node * node = new Node();
+	node -> data = data;
+	node -> next = NULL;
+	if(*head == NULL)
+	{
+		cout << "Empty list\n";
+		return;
+	}
+	Node *temp = *head;
+	while(temp-> next != NULL)
+		temp = temp -> next;
+		
+	temp -> next = node;
+	//node -> next = NULL;
+}
+
+void delte(Node ** head, int data)
+{
+	Node *temp = *head, *prev;
+		while(temp != NULL && data != (temp -> data))
+		{
+			prev = temp;
+			temp = temp->next;
+		}
+	if(temp == NULL)
+	{	
+		cout << "Data Not Present\n";
+		return;
+	}
+	
+	prev->next  = (temp->next);
+	
+}
+
+void disp(Node * head)
+{
+	Node * temp = head;
+	while(temp != NULL)
+	{
+		cout << temp->data << " " ;
+		temp = temp->next; 
+	}
+	
+}
+int main(){
+	Node * head = NULL;
+	while(1)
+	{
+		cout << "\t\tMENU\n";
+		cout << "Enter 1 for pushing an element at the begining:\n";
+		cout << "Enter 2 for inserting an element in between:\n";	
+		cout << "Enter 3 for pushing an element at the end:\n";
+		cout << "Enter 4 to delete an element from the list:\n";
+		cout << "Enter 5 to display  elements of the list:\n";
+		cout << "Enter 6 to exit\n\n\n";
+		cout << "Enter your choice:\n";
+		int ch, data, pos;
+		cin >> ch;
+		if(ch == 6)
+			break;
+			
+		switch(ch)
+		{
+			case 1: 
+				cout << "Enter the data:\n";
+					cin >> data;
+				push_front(&head, data);
+				break;
+				
+			case 2: 
+				cout << "Enter the data ans position:\n";
+					cin >> data >> pos;
+				insert(&head, data, pos);
+				break;
+			case 3: 
+				cout << "Enter the data:\n";
+					cin >> data;
+				append(&head, data);
+				break;
+			case 4: 
+				cout << "Enter position to be deleted:\n";
+					cin >> pos;
+				delte(&head, pos);
+				break;
+			case 5: 
+				cout << "The elements of the linkedlist are:\n";
+					disp(head);
+				cout << endl;
+				
+				break;
+		}
+	}
+	return 0;
+}
