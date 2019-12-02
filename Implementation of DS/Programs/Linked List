@@ -1,0 +1,60 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class Node{
+	public:
+		int data;
+		Node * next;
+		Node(int data){
+			
+		}
+};
+
+class List : public Node
+{
+	Node * fst, * lst;
+	void create(
+}
+
+void List :: search(int data)
+{
+	while(head != NULL && data != head -> data)
+		head = head->next;
+		
+	if(head != NULL)
+		cout << "Data found\n";
+	else
+		cout << "Data Not found\n";
+}
+
+void List :: disp(Node * head)
+{
+	Node * temp = head;
+	while(temp != NULL)
+	{
+		cout << temp->data << " " ;
+		temp = temp->next; 
+	}
+	
+}
+int main(){
+	Node * head = new Node();
+	Node * second = new Node();
+	Node * third = new Node();
+	cout << "Enter the data : \n";
+			cin >> head -> data;
+		
+		head->next = second;
+		
+		second->data = 2;
+		 second->next = third; 
+		third->data = 7;
+		third->next = NULL;
+		cout << "Created linked list:\n";
+		disp(head);
+		int to_find;
+		cout << "\nEnter the value to be find:\n";
+		cin >> to_find;
+		search(head, to_find);
+	return 0;
+}
