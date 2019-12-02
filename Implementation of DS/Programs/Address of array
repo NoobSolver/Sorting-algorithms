@@ -1,0 +1,40 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+
+int main(){
+	
+	cout << "Enter 1 to calculate the address of 1D array:\n";
+	cout << "Enter 2 to calculate the address of 2D array:\n";
+	int choice;
+	cin >> choice;
+	int w, base, row = 0, col = 0, i, j;
+
+	switch(choice){
+		case 1:
+			cout << "Enter the base and no of words:\n";
+			cin >> base >> w;
+			cout << "Enter the length of the array:\n";
+			cin >> col;
+			cout << "Enter the position where to find the address:\n";
+			cin >> i;
+			cout << "The address of the given position is:\n";
+			cout << base + w*(i-1) << endl;
+			break;
+			
+		case 2:
+			cout << "Enter the base and no of words:\n";
+			cin >> base >> w;
+			cout << "Enter the length of row and col of the array:\n";
+			cin >> row >> col;
+			cout << "Enter the position where to find the address:\n";
+			cin >> i >> j;
+			cout << "The address of the given position is:\n";
+			cout << base + w*((col)*(i-1) + (j-1)) << endl;
+			break;
+		default:	
+			cout << "Wrong choice:\n";	
+	}
+
+	return 0;
+}
